@@ -7,6 +7,7 @@
 <ul>
     <li><a href="#variables">Variables</a></li>
     <li><a href="#functions">Functions</a></li>
+    <li><a href="#arrays">Arrays</a></li>
 </ul>
 
 <hr/>
@@ -118,7 +119,8 @@ console.log(removed); // Output: item 2
 newItemTracker.push('item3', 'item4');
 console.log(newItemTracker); // Output: [ 'item 0', 'item 1', 'item 3', 'item4' ]
 </code></pre>
-<p>Redirect to codecademy/more-array-methods.js to see more examples of array functions.
+<p>Redirect to 
+<a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/more-array-methods.js">codecademy/more-array-methods.js</a> to see more examples of array functions.
 Find the documentation of JavaScript Array <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">here</a>.</p>
 
 <br/>
