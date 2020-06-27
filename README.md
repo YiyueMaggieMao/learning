@@ -5,6 +5,7 @@
 <h2>My Learning Notes ( Feel free to take a look! ):</h2>
 <ul>
     <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/notes.md">JavaScript (In Progress)</a> - Last updated on June 24, 2020</li>
+    <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/notes.md">LeetCode (In Progress)</a> - Last updated on June 26, 2020</li>
 </ul>
 <h2>Progress Log</h2>
 <p>Coming Soon! Next anticipated update by beginning of July</p>
