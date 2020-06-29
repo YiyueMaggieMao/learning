@@ -8,6 +8,8 @@
     <li><a href="#variables">Variables</a></li>
     <li><a href="#functions">Functions</a></li>
     <li><a href="#arrays">Arrays</a></li>
+    <li><a href="#iterators">Iterators</a></li>
+    <li><a href="#objects">Objects</a></li>
 </ul>
 
 <hr/>
@@ -56,7 +58,7 @@ console.log(`I own a pet ${myPet}.`); // This will print "I own a pet armadillo"
 <p>Example from Codecademy:</p>
 <pre><code>
 function greeting (name = 'stranger') {
-    console.log(`Hello, ${name}!`)<
+    console.log(`Hello, ${name}!`)
 }
 greeting('Nick') // Output: Hello, Nick!
 greeting() // Output: Hello, stranger!
@@ -122,6 +124,107 @@ console.log(newItemTracker); // Output: [ 'item 0', 'item 1', 'item 3', 'item4' 
 <p>Redirect to 
 <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/more-array-methods.js">codecademy/more-array-methods.js</a> to see more examples of array functions.
 Find the documentation of JavaScript Array <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">here</a>.</p>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Iterators ----------------------------------------------------->
+<h2 id="iterators">Iterators</h2>
+<p><a href="#for-each">Methods: forEach() and map()</a></p>
+<p><a href="#more-iter-func">More Iterator functions</a></p>
+
+<br/>
+<h3 id="for-each">Methods: forEach() and map()</h3>
+<p>Two of the JavaScript methods that behave like enhanced for loops are <code>forEach()</code> and <code>map()</code>.</p>
+<p>Similar to the enhanced for loop, the <code>forEach()</code> method iterates through every element of an array.
+The <code>forEach()</code> method <b>does not</b> create a new array, but simply does operations on each instance of the array. It takes a function as the parameter, and can be called with the syntax <code>arrayName.forEach(function)</code>.
+<p>The <code>map()</code> method, on the other hand, creates a new array from the values in a previously exisiting array. The <code>map()</code> function can called with the syntax 
+<code>const newArray = oldArray.map(function)</code>, and the function <b>must have a return value</b>.</p>
+<p>Example from Codecademy + personal understanding: </p>
+<pre><code>
+const numbers = [1, 2, 3];
+fruits.forEach(num => console.log(num)); // Simply outputs 1, 2, 3 in order
+const newNumbers = numbers.map(num => num*2); // newNumbers will be a new array with values 2, 4, 6
+</code></pre>
+<p>Note that in the example above, we use the name <code>num</code> to refer to the current instance in the array, ,uch like how we use an enhanced for loop in Java.</p>
+
+<br/>
+<h3 id="more-iter-func">More Iterator functions</h3>
+<p>Other than <code>forEach()</code> and <code>map()</code>, JavaScript has many more Iterator functions. Examples include: </p>
+<ul>
+    <li><code>filter()</code> takes a function returning a boolean as an argument, and returns a new array with all the elements that have the function return <b>true</b>.</li>
+    <li><code>findIndex()</code> takes a function returning a boolean as an argument, and returns the index of the first element that has the function return <b>true</b>.</li>
+    <li><code>reduce()</code> returns a <b>singular value</b> after iterating through the array. <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/iterator-reduce.js">Example with annotation</a> </li>
+</ul>
+Find more iterator methods <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">here</a>.</p>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Objects ----------------------------------------------------->
+<h2 id="objects">Objects</h2>
+<p><a href="#object-basics">Object Declaration, Get, Set</a></p>
+<p><a href="#add-remove-prop"> Adding and Removing Props </a></p>
+<p><a href="#object-methods">Object Methods</a></p>
+<p><a href="#loop-thru-objects">Looping Through Objects</a></p>
+
+<br/>
+<h3 id="object-basics">Object Declaration, Get, Set</h3>
+<p>JavaScript objects have bodies consisting of <b>props</b>, which looks like <b>key-value pairs</b>. The props of an object looks like <code>propName: value</code>, or multi-word prop names like <code>'Multi Word Prop Name': value</code>. The props are seperated by commas <code>,</code> .</p>
+<p>To get the value of a prop, we can use either <code>objectName.propName</code> (dot notation) or <code>objectName['propName']</code> (bracket notation). The set the value of a prop, we can put either the dot or bracket notation of the prop on the left hand side, and assign it to the value that we want to update it to be. </p>
+<p>Objects can also <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/nested-objects.js"> have objects as their props</a>, and we will call those object props <code>nested objects</code>. </p>
+
+<p>Example from Codecademy (Modified):</p>
+<pre><code>
+const spaceship = {
+  'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  mission: 'Explore the universe' 
+}; // Declares an object named spaceship with 3 props
+
+console.log(spaceship.homePlanet) // Get with dot notation
+spaceship['Fuel Type'] = 'Unicorn Hair'; // Set with bracket notation
+</code></pre>
+
+<br/>
+<h3 id="add-remove-prop">Adding and Removing Props</h3>
+<p> To add a prop to an object, we can simply call <code>objectName.propName = value</code>; to remove one, we call <code>delete objectName.propName</code>.
+<p>Continuing the example of the above section, here's how we can add and remove props from the spaceship object: </p>
+<pre><code>
+spaceship[destination] = 'Mars'; // Adds a new destination prop to spaceship, and set its value to Mars
+delete spaceship.mission; // spaceship will no longer have a mission prop
+</code></pre>
+
+<br/>
+<h3 id="object-methods">Object Methods</h3>
+<p>A method is a property of an object that is a function. To declare a method, we can put an anonymous function expression as the value, and the key will be the name of the method. We can also omit the colon and the function keyword using the ES6 expression, which I will include in the <a href="#object-methods-example">example below</a>.</p>
+<p>To invoke a method, we simply use the regular dot notation, <code>objectName.methodName(params)</code>. </p>
+<p>Example from Codecademy</p>
+<pre><code>
+let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';<br/>
+// Below demonstrates the 2 different ways to declare object methods
+let alienShip = {
+    retreat: function(){
+            console.log(retreatMessage);
+    },
+    takeOff(){
+        console.log('Spim... Borp... Glix... Blastoff!');
+    }
+};
+
+// Calls the methods
+alienShip.retreat();
+alienShip.takeOff();
+</code></pre>
+
+<br/>
+<h3 id="loop-thru-objects">Looping Through Objects</h3>
+<p>We can loop through all the nested objects under an object with the <code>for...in</code> syntax. The basic syntax looks like: <code>for (nestedObject in object){doSomething()};</code> , in which the <code>nestedObject</code> will hold the name of the object, and will be accessible as a string throughout the function body.</p>
+<p>View the codecademy example of looping through objects <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/loop-through-objects.js">here</a>. </p>
 
 <br/>
 <a href="#content">Back to Content</a>
