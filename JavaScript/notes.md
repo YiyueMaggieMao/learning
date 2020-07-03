@@ -171,6 +171,7 @@ Find more iterator methods <a href="https://developer.mozilla.org/en-US/docs/Web
 <p><a href="#add-remove-prop"> Adding and Removing Props </a></p>
 <p><a href="#object-methods">Object Methods</a></p>
 <p><a href="#loop-thru-objects">Looping Through Objects</a></p>
+<p><a href="#this-in-objects">The "this" keyword</a></p>
 
 <br/>
 <h3 id="object-basics">Object Declaration, Get, Set</h3>
@@ -189,6 +190,8 @@ const spaceship = {
 console.log(spaceship.homePlanet) // Get with dot notation
 spaceship['Fuel Type'] = 'Unicorn Hair'; // Set with bracket notation
 </code></pre>
+
+<p>Side note: If we want to indicate that a private property, we can put an underscore <code>_</code> before the property name (For example, <code>_private-prop</code>). We *can* still access / change the value of that property outside the object, but it's a good notation to remind us of the intended usage.</p>
 
 <br/>
 <h3 id="add-remove-prop">Adding and Removing Props</h3>
@@ -225,6 +228,26 @@ alienShip.takeOff();
 <h3 id="loop-thru-objects">Looping Through Objects</h3>
 <p>We can loop through all the nested objects under an object with the <code>for...in</code> syntax. The basic syntax looks like: <code>for (nestedObject in object){doSomething()};</code> , in which the <code>nestedObject</code> will hold the name of the object, and will be accessible as a string throughout the function body.</p>
 <p>View the codecademy example of looping through objects <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/loop-through-objects.js">here</a>. </p>
+
+<br/>
+<h3 id="this-in-objects">The "this" Keyword</h3>
+<p>In JavaScript, the keyword <code>this</code> has different meanings in bracket and arrow functions. In bracket functions, <code>this</code> refers to the object that the function is within, while in arrow functions, <code>this</code> refers whatever the <code>window</code> or <code>global</code> object, much like how we use <code>this</code> in Java.</p>
+
+Example from Codecademy + personal understanding:
+<pre><code>
+const animal1 = {
+    sound: 'baaa',
+    bracketSound() {
+        return this.sound; // will return 'baaa', this == animal 1
+    }
+    arrowSound: () => {
+        return this.sound; // will return undefined, this == global or window object
+    }
+}
+</code></pre>
+
+<p>The general idea is to avoid using arrow functions when we need to use the <code>this</code> keyword; however, <a href="https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc#api-calls">here is a good example</a> of when arrow functions can be useful, according to codementor.</p>
+
 
 <br/>
 <a href="#content">Back to Content</a>
