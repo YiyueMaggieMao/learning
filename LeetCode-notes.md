@@ -4,6 +4,7 @@
 <h2 id="content">Content</h2>
 <ul>
     <li><a href="#backtracking">Backtracking</a></li>
+    <li><a href="#hashing">Hashing</a></li>
     <li><a href="#two-pointers">Two Pointers</a></li>
 </ul>
 
@@ -14,6 +15,22 @@
 <h3>Example</h3>
 <ul>
     <li><a href="https://leetcode.com/problems/sudoku-solver/">0037- Sudoku Solver</a>. Pretty typical backtracking problem. The possible options for each grid is everything that's not in its row, column, or box AND hasn't already been eliminated due to a previous failure.<a href="https://leetcode.com/problems/sudoku-solver/discuss/707726/Java-Backtracking-Simple-Solution"> reference solution</a></li>
+</ul>
+
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Hashing ----------------------------------------------------->
+<h2 id="hashing">Hashing</h2>
+<p>Hashing is often used when we want to distinguish objects into different groups based on a specific characteristic. We use that specific characteristic to choose the <b>key</b> of the hashtable, and the <b>value</b> is typically an array containing every entry that matches the category as described by the key. </p>
+
+<h3>Advantage</h3>
+<p>Hashtables allow us to retrieve / store values in <b>O(1)</b> time as long as we have figured out the hash key. Instead of going exhaustively through every entry to find a match, we can just look up the hash key to insert it in constant time.</p>
+
+<h3>Examples</h3>
+<ul>
+    <li><a href="https://leetcode.com/problems/group-anagrams/">0049- Group Anagrams</a>. In this question, we want to sort the words into groups of anagrams. Instead of checking character for character with each word, we can sort the words in alphabetical order and use the sorted word as a hash key (<a href="https://leetcode.com/problems/group-anagrams/discuss/715869/java-hashmap-easy-solution">reference solution 1</a>) . Alternatively, we can use the frequencies of each character in a word as a hash key, which will be faster than the previous solution, but take up more space since we will use arrays of length 26 for each key (<a href="https://leetcode.com/problems/group-anagrams/discuss/715869/java-hashmap-easy-solution">reference solution 2</a>) .</li> 
 </ul>
 
 <a href="#content">Back to Content</a>
