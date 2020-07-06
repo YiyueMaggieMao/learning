@@ -170,6 +170,7 @@ Find more iterator methods <a href="https://developer.mozilla.org/en-US/docs/Web
 <p><a href="#object-basics">Object Declaration, Get, Set</a></p>
 <p><a href="#add-remove-prop"> Adding and Removing Props </a></p>
 <p><a href="#object-methods">Object Methods</a></p>
+<p><a href="#getters-n-setters">Getters and Setters</a></p>
 <p><a href="#loop-thru-objects">Looping Through Objects</a></p>
 <p><a href="#this-in-objects">The "this" keyword</a></p>
 
@@ -223,6 +224,26 @@ let alienShip = {
 alienShip.retreat();
 alienShip.takeOff();
 </code></pre>
+<p>Side note: JavaScript Objects has <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">a library of built-in functions</a> that we can call on any declared object. View an Codecademy example of utilizing some of these functions <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/built-in-object-methods.js">here</a>.</p>
+
+<br/>
+<h3 id="getters-n-setters">Getters and Setters</h3>
+<p> Unlike many other programming languages, getters and setters in JavaScript need to be specified using the <code>get</code> and <code>set</code> keywords, followed by the name of the variable that we want to change (which is also the name of the getter/setter). Getters and setters are typically used on <b>private variables</b>. We can use the getter method by assigning the value <code>objectName.getterName</code> to a variable, and the setter method by assigning <code>objectName.getterName</code> a value. </p>
+<p> Example from Codecademy (trimmed for concision): </p>
+<pre><code>
+const robot = {
+  _numOfSensors: 15,
+  get numOfSensors(){
+    if(typeof this._numOfSensors === 'number'){ return this._numOfSensors; } 
+  },<br/>
+  set numOfSensors(num){
+    if(typeof num === 'number' && num >= 0){ this._numOfSensors = num; }
+  }
+};
+
+robot.numOfSensors = 100; // Sets the number of sensors
+console.log(robot.numOfSensors); // Gets the number of sensors
+</code></pre>
 
 <br/>
 <h3 id="loop-thru-objects">Looping Through Objects</h3>
@@ -248,6 +269,46 @@ const animal1 = {
 
 <p>The general idea is to avoid using arrow functions when we need to use the <code>this</code> keyword; however, <a href="https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc#api-calls">here is a good example</a> of when arrow functions can be useful, according to codementor.</p>
 
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Classes ----------------------------------------------------->
+<h2 id="classes">Classes</h2>
+<p><a href="#inheritance">Inheritance</a></p>
+<p><a href="#static-methods">Static Methods</a></p>
+
+<h3 id="inheritance">Inheritance</h3>
+<p>JavaScript, like Java, is an <b>Object-Oriented Language</b>. Also like Java, JavaScript can have classes that are extensions of other classes which also uses the <code>extends</code> keyword. However, unlike most other OOP languages, we need to explicitly call the super class constructor using the <code>super(props)</code> statement.</p>
+<p>Example from Codecademy + annotations: </p>
+<pre><code>
+// Assuming we already have an Animal class defined
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name); // Calls the Animal class constructor with the name argument
+    this._usesLitter = usesLitter; // Defines a prop unique to Cat class
+  }
+} // This class automatically inherits all the methods of the Animal class
+</code></pre>
+View a more complete example using JavaScript class inheritance <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/class-inheritance.js">here</a>.</p>
+
+<br/> 
+<h3 id="static-methods">Static Methods</h3>
+<p>In JavaScript, the static methods are methods that are accessible through <b>only the class itself</b>, but not the specific instances of it. Like most other OOP languages, the static methods in JavaScript are indicated using the keyword <code>static</code>.
+<p>Example from personal understanding: </p>
+<pre><code>
+class Cashier {
+    static cashMoney(){
+        Console.log("Here comes the $$$! :D");
+    }
+}
+
+Cashier.cashMoney(); // Will log the statement
+const maggie = new Cashier();
+maggie.cashMoney(); // Can't do this because maggie is an individual instance :(
+</code></pre>
 
 <br/>
 <a href="#content">Back to Content</a>
