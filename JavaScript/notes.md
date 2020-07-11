@@ -10,6 +10,7 @@
     <li><a href="#arrays">Arrays</a></li>
     <li><a href="#iterators">Iterators</a></li>
     <li><a href="#objects">Objects</a></li>
+    <li><a href="#modules">Modules</a></li>
 </ul>
 
 <hr/>
@@ -309,6 +310,65 @@ Cashier.cashMoney(); // Will log the statement
 const maggie = new Cashier();
 maggie.cashMoney(); // Can't do this because maggie is an individual instance :(
 </code></pre>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Modules ----------------------------------------------------->
+<h2 id="modules">Modules</h2>
+<p><a href="#export-use-modules">Exporting and Using Modules</a></p>
+<p><a href="#named-exports">Named exports</a></p>
+
+
+<h3 id="exoport-use-modules">Exporting and Using Modules</h3>
+<p>In JavaScript, we can export modules from files and to be able to be accessed from another file. We define the exports of a file using the line <code>module.exports = moduleName</code>, if we have one singular export; or we can wrap any collection of data in a singular object, and use the syntax <code>module.exports = {...}</code>.</p>
+<p>We can access the exports of others files using <b>require</b>. We pass the relative path of the file with exports as an argument to the <code>require()</code> function, and assign it to a const value. To access specific output modules, we can use the syntax <code>exportValName.moduleName</code> to access their values.</p>
+<p>Example from Codecademy illustrating one singular export: </p>
+<pre><code>
+// Code in menu.js 
+let Menu = {};
+Menu.specialty =  "Roasted Beet Burger with Mint Sauce";
+module.exports = Menu; 
+
+// Code in order.js that uses the Menu module
+const Menu = require('./menu.js');
+function placeOrder() {
+  console.log('My order is: ' + Menu.specialty);
+}
+</code></pre>
+<p>Example from StackOverflow + personal understanding illustrating multiple exports: </p>
+<pre><code>
+// Decalring exports, assuming function2 has already been defined
+module.exports = {
+  moduleString: "Hello World",
+  method: function2
+}
+
+// Accessing modules
+var myModule = require("./lib/file.js")
+const method = myModule.method;
+</pre></code>
+
+<p>Note: the <code>module.exports()</code> method is more used for Node.js, which does not support the ES6 syntax. For environments that use the ES6 syntax, such as frontend development, we use the syntax <code>export default moduleName</code>. View an example of export defualt<a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/export-default.js">here</a>.</p>
+
+<br/>
+<h3 id="named-exports">Named Exports</h3>
+<p>In environments that support ES6, we can use named exports, practically giving a name to the elements that we export. Additionally, we can export variables / functions as soon as they are declared, simply by adding the <code>export</code> keyword in front of the declaration. We import them the same way as we normally do with named exports.</p>
+<p>Example from Codecademy illustrating immediate exports: </p>
+<pre><code>
+// menu.js
+export let specialty = 'Honey Butter Garlic Chicken';
+export function isVegetarian() {
+  return false;
+}; 
+
+// Another file that uses the imports
+import {specialty, isVegetarian} from './menu';
+</code></pre>
+<p>View an example of named exports (without immediate exports) <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/named-exports.js">here</a>.</p>
+<p>We can also <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/import-export-as.js">change the names of exports using the "as" keyword</a>.</p>
 
 <br/>
 <a href="#content">Back to Content</a>
