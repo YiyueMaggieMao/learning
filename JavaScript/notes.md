@@ -11,6 +11,7 @@
     <li><a href="#iterators">Iterators</a></li>
     <li><a href="#objects">Objects</a></li>
     <li><a href="#modules">Modules</a></li>
+    <li><a href="#promises">Promises</a></li>
 </ul>
 
 <hr/>
@@ -351,7 +352,7 @@ var myModule = require("./lib/file.js")
 const method = myModule.method;
 </pre></code>
 
-<p>Note: the <code>module.exports()</code> method is more used for Node.js, which does not support the ES6 syntax. For environments that use the ES6 syntax, such as frontend development, we use the syntax <code>export default moduleName</code>. View an example of export defualt<a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/export-default.js">here</a>.</p>
+<p>Note: the <code>module.exports()</code> method is more used for Node.js, which does not support the ES6 syntax. For environments that use the ES6 syntax, such as frontend development, we use the syntax <code>export default moduleName</code>. View an example of export defualt <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/export-default.js">here</a>.</p>
 
 <br/>
 <h3 id="named-exports">Named Exports</h3>
@@ -375,4 +376,27 @@ import {specialty, isVegetarian} from './menu';
 
 <hr/>
 
-<!--------------------------------------------- Coming Soon ----------------------------------------------------->
+<!--------------------------------------------- Promises ----------------------------------------------------->
+<h2 id="promises">Promises</h2>
+<p><a href="#promise-basics">Promise Basics</a></p>
+
+<h3 id="promise-basics">Promise Basics</h3>
+<p>In Javascript, promises are <b>objects</b> that can resolve or reject a certain request depending on the circumstances. Depending on whether request was resolved or rejected, we can append the promise object with the <code>then()</code> method to carry out different functionalities depending on the result. The <code>then()</code> method takes two optional functions parameters, the first one handling resolve and the second one handling reject.</p>
+<p>We also usaually make promises by returning them in <b>asynchronous</b> functions. To make the functions asynchronous, we use the method <code>setTimeOut(functionName, timeInMs)</code>. </p>
+<p>Example from Codecademy:</p>
+<pre><code>
+// library.js has the checkInventory function 
+// that is asynchronous and returns a promise object
+const {checkInventory} = require('./library.js'); 
+const order = [['sunglasses', 1], ['bags', 2]];
+
+const handleSuccess = (successMessage) => {
+  console.log(successMessage);
+}
+const handleFailure = (failureMessage) => {
+  console.log(failureMessage);
+}<br/>
+// handleSuccess will run on resolve, and handleFailure will run on reject
+prom = checkInventory(order).then(handleSuccess, handleFailure);
+</code></pre>
+<p>In the above example, because both arguments are optional, if we only want to handle success, we can do <code>checkInventory(order).then(handleSuccess)</code>. On the other hand, if we only want to handle failure, we can do <code>checkInventory(order).then(null, handleFailure)</code>. </p>
