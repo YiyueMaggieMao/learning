@@ -378,9 +378,11 @@ import {specialty, isVegetarian} from './menu';
 
 <!--------------------------------------------- Promises ----------------------------------------------------->
 <h2 id="promises">Promises</h2>
-<p><a href="#promise-basics">Promise Basics</a></p>
+<p><a href="#promise-basics">Promise Basics, Resolve, Reject</a></p>
+<p><a href="#chaining-promises">Chaining Promises</a></p>
+<p><a href="#promise-all">Promise.all()</a></p>
 
-<h3 id="promise-basics">Promise Basics</h3>
+<h3 id="promise-basics">Promise Basics, Resolve, Reject</h3>
 <p>In Javascript, promises are <b>objects</b> that can resolve or reject a certain request depending on the circumstances. Depending on whether request was resolved or rejected, we can append the promise object with the <code>then()</code> method to carry out different functionalities depending on the result. The <code>then()</code> method takes two optional functions parameters, the first one handling resolve and the second one handling reject.</p>
 <p>We also usaually make promises by returning them in <b>asynchronous</b> functions. To make the functions asynchronous, we use the method <code>setTimeOut(functionName, timeInMs)</code>. </p>
 <p>Example from Codecademy:</p>
@@ -400,3 +402,52 @@ const handleFailure = (failureMessage) => {
 prom = checkInventory(order).then(handleSuccess, handleFailure);
 </code></pre>
 <p>In the above example, because both arguments are optional, if we only want to handle success, we can do <code>checkInventory(order).then(handleSuccess)</code>. On the other hand, if we only want to handle failure, we can do <code>checkInventory(order).then(null, handleFailure)</code>. </p>
+<p>Another way to do this, however, is to use the <code>catch()</code> method. Unlike <code>then()</code>, its argument consists of only <b>one funciton</b>, which will be triggered only when the promise <b>rejects</b>.</p>
+<p>That being said, the other way of writing the last line of the previous code block is: </p>
+<pre><code>
+prom = checkInventory(order)
+.then(handleSuccess)
+.catch(handleFailure);
+</code></pre>
+
+<br/>
+<h3 id="chaining-promises">Chaining Promises</h3>
+<p>Sometimes when performing a task, we want to separate it into a chain of events that will give responses at each step. We can do this by using <b>promise chaining</b>, which we can achieve by returning the call to the second promise function in a handler function of the first promise function. We can then put the handler of the second promise function after the first.</p>
+<p>Example from Codecademy, simplified:</p>
+<pre><code>
+checkInventory(order)
+    .then((resolvedValueArray) => {
+        return processPayment(resolvedValueArray)})
+    .then((resolvedValueArray) => {
+        return shipOrder(resolvedValueArray)})
+    .then((successMessage) => {
+              console.log(successMessage);
+    })
+    .catch((rejectionReason) => {
+        console.log(rejectionReason);
+    });
+</code></pre>
+<p>Notice that the last <code>catch()</code> statement will catch the first rejection that happens, and log the rejection reason onto the console.</p>
+<p>Click <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/chaining-promises.js">here</a> for the full Codecademy code on the promising chaining. </p>
+
+<br/>
+<h3 id="promise-all">Promise.all()</h3>
+<p>In situations where we need to resolve multiple promises (in a <b>parallel</b> instead of step-by-step relationship when we chain promises), we can use <code>Promise.all()</code> with promise functions as arguments, to check if all the promises returned from the argument functions resolved. We can add the <code>then()</code> and <code>catch()</code> methods too, as the method also returns a promise that resolves only if all the argument promises resolve, and rejects otherwise.</p>
+<p>Example from Codecademy, simplified:</p>
+<pre><code>
+let checkSunglasses = checkAvailability('sunglasses', 'Favorite Supply Co.');
+let checkPants = checkAvailability('pants', 'Favorite Supply Co.');
+let checkBags = checkAvailability('bags', 'Favorite Supply Co.');
+
+Promise.all([checkSunglasses, checkPants, checkBags])
+.then(onFulfill)
+.catch(onReject);
+</code></pre>
+<p>View the full Codecademy example <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/promise-all.js">here</a>.</p>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Coming Soon ----------------------------------------------------->
