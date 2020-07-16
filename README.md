@@ -4,7 +4,7 @@
 <p>Folders in this repo include some personal notes, as well as interesting code snippets that I came across while learning the corresponding language / tool.</p>
 <h2>My Learning Notes ( Feel free to take a look! ):</h2>
 <ul>
-    <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/notes.md">JavaScript (In Progress)</a> - Last updated on July 11, 2020</li>
+    <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/notes.md">JavaScript (In Progress)</a> - Last updated on July 16, 2020</li>
     <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/LeetCode-notes.md">LeetCode (In Progress)</a> - Last updated on July 6, 2020</li>
 </ul>
 <h2>Progress Log</h2>
