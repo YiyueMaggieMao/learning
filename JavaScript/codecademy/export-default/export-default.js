@@ -1,20 +1,3 @@
-// airplane.js
-let Airplane = {
-  availableAirplanes: [
-    {
-      name: 'AeroJet',
-      fuelCapacity: 800
-    },
-    {
-      name: 'SkyJet',
-      fuelCapacity: 500
-    }
-  ]
-};
-
-export default Airplane;
-
-
 // File that uses the Airplane module
 import Airplane from './airplane';
 
