@@ -5,7 +5,7 @@
 <h2>My Learning Notes ( Feel free to take a look! ):</h2>
 <ul>
     <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/notes.md">JavaScript (In Progress)</a> - Last updated on July 16, 2020</li>
-    <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/LeetCode-notes.md">LeetCode (In Progress)</a> - Last updated on July 6, 2020</li>
+    <li><a href="https://github.com/YiyueMaggieMao/learning/blob/master/LeetCode-notes.md">LeetCode (In progress)</a> - Last updated on July 23, 2020</li>
 </ul>
 <h2>Progress Log</h2>
 <p>June 2020</p>
