@@ -12,6 +12,7 @@
     <li><a href="#objects">Objects</a></li>
     <li><a href="#modules">Modules</a></li>
     <li><a href="#promises">Promises</a></li>
+    <li><a href="#async-await">Async - Await</a></li>
 </ul>
 
 <hr/>
@@ -450,4 +451,60 @@ Promise.all([checkSunglasses, checkPants, checkBags])
 
 <hr/>
 
-<!--------------------------------------------- Coming Soon ----------------------------------------------------->
+<!--------------------------------------------- Async - Await ----------------------------------------------------->
+<h2 id="async-await">Async -  Await</h2>
+<p><a href="#async-basics">Async Basics</a></p>
+<p><a href="#await">The "Await" Keyword</a></p>
+
+<h3 id="async-basics">Async Basics</h3>
+<p>Wrapping functions with the <code>async</code> keyword creates asynchronous functions that help us execute other tasks efficiently while waiting on the current execition to finish. Async functions always returns a <b>promise object</b> that will behave based on the inner function's <b>return value</b>:</p>
+<table>
+<tr>
+  <th>Inner Function Return Value</th>
+  <th>Async Object Return Value</th>
+</tr>
+<tr>
+  <td>No return value</td>
+  <td>A promise with a resolved value of <code>undefined</code></td>
+</tr>
+<tr>
+  <td>A non-promise value</td>
+  <td>A promise that resolves to the returned value</td>
+</tr>
+<tr>
+  <td>A promise object</td>
+  <td>The promise object returned from the inner function</td>
+</tr>
+</table>
+
+<p>Example from Codecademy: </p>
+<pre><code>
+async function withAsync(num){ // Equivalent: const withAsync = async (num) => { ...
+  if (num === 0){
+      return 'zero';
+    } else {
+      return 'not zero';
+    }
+}
+
+withAsync(100)
+  .then((resolveValue) => {
+  console.log(` withAsync(100) returned a promise which resolved to: ${resolveValue}.`);
+})
+</code></pre>
+<p>View the constructor equivlant of the above example <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/async-constructor-equiv.js">here</a>.</p>
+
+<br/>
+<h3 id="await">Using await with aysnc</h3>
+<p>The <code>await</code> keyword is, arguably, what gives async meaning. It is an <b>operator</b> that returns the resolved value of a promise, and halts the async function until the promise resolves. In other words, the rest of the async function will execute after the promise resolves, to avoid using a <code>pending</code> value accidentally due to unresolved promises.</p>
+<p>If we have dependent promises, or in other words, promises that we would want to chain together, we simply put them in order while using the <code>await</code> keyword (See example below).</p>
+<p>Example from Codecademy (+ personal understandings):</p>
+<pre><code>
+async function announceDinner() {
+  let meal = await brainstormDinner();
+  console.log(`I'm going to make ${meal} for dinner.`);
+  let cookedMeal = await cookDinner(meal);
+  console.log('The ${cookedMeal} is cooked!');
+}
+announceDinner();
+</code></pre>
