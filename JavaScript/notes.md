@@ -455,6 +455,7 @@ Promise.all([checkSunglasses, checkPants, checkBags])
 <h2 id="async-await">Async -  Await</h2>
 <p><a href="#async-basics">Async Basics</a></p>
 <p><a href="#await">The "Await" Keyword</a></p>
+<p><a href="#async-err-handling"> Error Handling in Async </a></p>
 
 <h3 id="async-basics">Async Basics</h3>
 <p>Wrapping functions with the <code>async</code> keyword creates asynchronous functions that help us execute other tasks efficiently while waiting on the current execition to finish. Async functions always returns a <b>promise object</b> that will behave based on the inner function's <b>return value</b>:</p>
@@ -502,9 +503,26 @@ withAsync(100)
 <pre><code>
 async function announceDinner() {
   let meal = await brainstormDinner();
-  console.log(`I'm going to make ${meal} for dinner.`);
-  let cookedMeal = await cookDinner(meal);
+  console.log(`I'm going to make ${meal} for dinner.`); // Will not run until brainstromDinner returns a promise
+  let cookedMeal = await cookDinner(meal); // Will not run until the line above logs
   console.log('The ${cookedMeal} is cooked!');
 }
 announceDinner();
+</code></pre>
+<p>We can execute multiple promises concurrently and only use await when the resolved values need to be used. Click <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/async-concurrent">here</a> for an example. </p>
+
+<br/>
+<h3 id="async-err-handling"> Error Handling in Async </h3>
+<p>The above section introduced how to use the resolved value of promises in async functions. However, when the promise rejects, the await will throw an error, which can be handled with the <code>try ... catch</code> block. We can put the resolve scenario in the <code>try</code> block, and if it fails, the <code>catch</code> block will take a string as an argument, and the value of the string will be the reject message. </p>
+<p>Example from Codecademy: </p>
+<pre><code>
+const makeDinner = async() => {
+  try {
+    let response = await cookBeanSouffle();
+    console.log(`${response} is served!`);
+  } catch(error) {
+    console.log(error);
+    console.log('Ordering a pizza!');
+  }
+}
 </code></pre>
