@@ -13,6 +13,7 @@
     <li><a href="#modules">Modules</a></li>
     <li><a href="#promises">Promises</a></li>
     <li><a href="#async-await">Async - Await</a></li>
+    <li><a href="#requests">Requests</a></li>
 </ul>
 
 <hr/>
@@ -526,3 +527,29 @@ const makeDinner = async() => {
   }
 }
 </code></pre>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Requests ----------------------------------------------------->
+<h2 href="requests">Requests</h2>
+
+<p><a href="#http-req-n-ajax">HTTP Requests & Ajax</a></p>
+<p><a href="#async-err-handling"> Error Handling in Async </a></p>
+
+<h3 id="http-req-n-ajax">HTTP Requests & Ajax</h3>
+<p>JavaScript is an <b>asynchronous</b> language, meaning that functions that can and can not be executed without having to wait for a response or timeout are being run separately. Usually, the functions that don't have to wait are pushed onto a stack, while those do are pushed onto a queue; and the tasks in the queue will run after the stack is emptied. An example will be attached below.</p>
+<p>XHR (XML Http Request) is an API that allows us to make requests to servers in <b>all kinds of languages</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">documentation</a> ). We usually use it with another API that we want to call in order to make a request.</p>
+
+<p>Example from Codecademy: </p>
+<pre><code>
+console.log('First message!');
+setTimeout(() => {
+   console.log('This message will always run last...');
+}, 0); // Yuuup, even if we do set the delay to be 0
+console.log('Second message!');
+</code></pre>
+
+<p>View an example of <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/xhr-api-get">getting values with XHR</a>.</p>
