@@ -537,7 +537,7 @@ const makeDinner = async() => {
 <h2 href="requests">Requests</h2>
 
 <p><a href="#http-req-n-ajax">HTTP Requests & Ajax</a></p>
-<p><a href="#async-err-handling"> Error Handling in Async </a></p>
+<p><a href="#fetch-n-async-await"> fetch() and async - await</a></p>
 
 <h3 id="http-req-n-ajax">HTTP Requests & Ajax</h3>
 <p>JavaScript is an <b>asynchronous</b> language, meaning that functions that can and can not be executed without having to wait for a response or timeout are being run separately. Usually, the functions that don't have to wait are pushed onto a stack, while those do are pushed onto a queue; and the tasks in the queue will run after the stack is emptied. An example will be attached below.</p>
@@ -551,5 +551,13 @@ setTimeout(() => {
 }, 0); // Yuuup, even if we do set the delay to be 0
 console.log('Second message!');
 </code></pre>
+<p>View an example of <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/xhr-api-get">getting values with XHR</a> and <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/xhr-api-post">posting values with XHR</a>.</p>
 
-<p>View an example of <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/xhr-api-get">getting values with XHR</a>.</p>
+<br/>
+<h3 id="fetch-n-async-await"> fetch() and async - await </h3>
+<p>The <code>fetch()</code> method uses promises to handle requests with ES6, while <code>async</code> and <code>await</code> provides a more simplified syntax with ES8. They are mostly similar with XHR, but with a different (and more readable!) syntax.</p>
+<p>View an example of <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/fetch-api-get">getting values with fetch</a> and <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/fetch-api-post">posting values with fetch</a>.</p>
+<p>View an example of <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/aysnc-await-api-get">getting values with async-await</a> and <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/async-await-api-post">posting values with async-await</a>.</p>
+
+<br/>
+<a href="#content">Back to Content</a>
