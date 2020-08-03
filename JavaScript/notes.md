@@ -354,7 +354,7 @@ var myModule = require("./lib/file.js")
 const method = myModule.method;
 </pre></code>
 
-<p>Note: the <code>module.exports()</code> method is more used for Node.js, which does not support the ES6 syntax. For environments that use the ES6 syntax, such as frontend development, we use the syntax <code>export default moduleName</code>. View an example of export defualt <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/export-default.js">here</a>.</p>
+<p>Note: the <code>module.exports()</code> method is more used for Node.js, which does not support the ES6 syntax. For environments that use the ES6 syntax, such as frontend development, we use the syntax <code>export default moduleName</code>. View an example of export defualt <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/export-default">here</a>.</p>
 
 <br/>
 <h3 id="named-exports">Named Exports</h3>
@@ -370,8 +370,8 @@ export function isVegetarian() {
 // Another file that uses the imports
 import {specialty, isVegetarian} from './menu';
 </code></pre>
-<p>View an example of named exports (without immediate exports) <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/named-exports.js">here</a>.</p>
-<p>We can also <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/import-export-as.js">change the names of exports using the "as" keyword</a>.</p>
+<p>View an example of named exports (without immediate exports) <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/named-exports">here</a>.</p>
+<p>We can also <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/import-export-as">change the names of exports using the "as" keyword</a>.</p>
 
 <br/>
 <a href="#content">Back to Content</a>
@@ -430,7 +430,7 @@ checkInventory(order)
     });
 </code></pre>
 <p>Notice that the last <code>catch()</code> statement will catch the first rejection that happens, and log the rejection reason onto the console.</p>
-<p>Click <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/chaining-promises.js">here</a> for the full Codecademy code on the promising chaining. </p>
+<p>Click <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/chaining-promises">here</a> for the full Codecademy code on the promising chaining. </p>
 
 <br/>
 <h3 id="promise-all">Promise.all()</h3>
@@ -445,7 +445,7 @@ Promise.all([checkSunglasses, checkPants, checkBags])
 .then(onFulfill)
 .catch(onReject);
 </code></pre>
-<p>View the full Codecademy example <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/promise-all.js">here</a>.</p>
+<p>View the full Codecademy example <a href="https://github.com/YiyueMaggieMao/learning/blob/master/JavaScript/codecademy/promise-all">here</a>.</p>
 
 <br/>
 <a href="#content">Back to Content</a>
