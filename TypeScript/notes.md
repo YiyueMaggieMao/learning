@@ -14,6 +14,7 @@
 <p><a href="#types-of-variables">Types of Variables</a></p>
 <p><a href="#variable-declaration">Variable Declaration</a></p>
 <p><a href="#type-assertion">Type Assertion</a></p>
+<p><a href="#union-types">Union Types</a></p>
 
 <br/>
 <h3 id="types-of-variables">Types of Variables</h3>
@@ -57,6 +58,23 @@ console.log((variable as any) + 1); // Output: 2. Any type can be casted into ty
 </code></pre>
 <p>Sometimes when 2 types don't overlap with each other, we can use <strong>double casting</strong> to bridge the conversion in between the 2 types. A common way to do so is by using <code>[variable] as [unknown/any] as [type]</code>.</p>
 <p>Click <a href="https://github.com/YiyueMaggieMao/learning/blob/master/TypeScript/examples/double-casting.ts">here</a> to view an example of double casting from xcatliu.com.</p>
+
+<br/>
+<h3 id="union-types">Union Types</h3>
+<p>In TypeScript, union types makes it possible for a variable to be assigned to one of the types in the union. The syntax for declaring a variable with a union type is <code>[var/let/const] [varName] : [type1] | [type2] | ...</code>. For example, <code>let x : boolean | number</code> will allow x to be either a boolean or a number.</p>
+<p>It's worth noting that, when a variable declared with a union type has not been assigned a value, it can only access functions / properties that are common to <strong>all types</strong> in the union. Attempting to access a function / property that is in one of the unioned types but not others will result in an error. If it has been assigned a value, on the other hand, TypeScript will infer its type and let it access all functions / properties of the inferred type.</p>
+<p>Example from xcatliu.com: </p>
+<pre><code>
+function getLength(something: string | number): number {
+    return something.length; // Error because something hasn't been assigned a value, and number does not have a length property
+}
+<br/>
+let myFavoriteNumber: string | number;
+myFavoriteNumber = 'seven';
+console.log(myFavoriteNumber.length); // 5
+myFavoriteNumber = 7;
+console.log(myFavoriteNumber.length); // Compile error
+</code></pre>
 
 <br/>
 <a href="#content">Back to Content</a>
