@@ -126,6 +126,7 @@ let myAdd2: (baseValue: number, increment: number) => number = function (x, y) {
 <br/>
 <h3 id="parameters">More on Parameters (optional, default, rest)</h3>
 <p>Similar to most programming languages, too many or too few arguments in a function call will result in errors when we have strictly defined parameters. <strong>Optional parameters</strong> and <strong>default parameters</strong> are 2 potential ways of bringing flexibility to these situations. </p>
+<h4>Optional Parameters</h4>
 <p>To make a parameter optional, we can simply add a question mark (<code>?</code>) after the parameter name (but before the colon (<code>:</code>) that specifies the type). Below is an example from the official TypeScript handbook:</p>
 <pre><code>
 function buildName(firstName: string, lastName?: string) {
@@ -133,6 +134,8 @@ function buildName(firstName: string, lastName?: string) {
   else return firstName;
 }
 </code></pre>
+
+<h4>Default Parameters</h4>
 <p>In addition to that, we can give a default value to an optional parameter, in case it is missing from the function call. Adding a default value to an optional parameter makes it a <strong>default parameter</strong>. We can add a default parameter to a function by adding <code>parameterName = [defaultVal]</code> to the list of parameters.</p>
 <p>Example from the offcial TypeScript handbook: </p>
 <pre><code>
