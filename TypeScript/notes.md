@@ -5,6 +5,7 @@
 <h2 id="content">Content</h2>
 <ul>
     <li><a href="#variables">Variables</a></li>
+    <li><a href="#functions">Functions</a></li>
 </ul>
 <hr/>
 
@@ -80,3 +81,69 @@ console.log(myFavoriteNumber.length); // Compile error
 <a href="#content">Back to Content</a>
 
 <hr/>
+
+<!--------------------------------------------- Functions ----------------------------------------------------->
+
+<h2 id="functions">Functions</h2>
+<p><a href="#function-syntax">Function Syntax</a></p>
+<p><a href="#type-inferrences">Type Inferrences</a></p>
+<p><a href="#parameters">More on Parameters (optional, default, rest)</a></p>
+
+<br/>
+<h3 id="function-syntax">Function Syntax</h3>
+<p>In TypeScript, we can specify the types of parameters as well as the return type of functions. Similar to variables, we put a colon (<code>:</code>) and the name of the type after each parameter to specify the type of the parameters. The return type of the function goes directly after the list of parameters and a fat arrow (<code>=></code>).  </p>
+<p>An example from the offical TypeScript handbook on declaring a function: </p>
+<pre><code>
+let myAdd: (baseValue: number, increment: number) => number = function (
+  x: number,
+  y: number
+): number {
+  return x + y;
+};
+</code></pre>
+<p>In the above example, on the left hand side of the equator, we have defined <code>myAdd</code> as a function that takes 2 arguments of type <code>number</code>, and returns a value of type <code>number</code>. </p>
+<p>On the right hand side of the equator, we assign an anonymous function as the value of <code>myAdd</code>, and the value is, unsurprisingly, a function that takes in 2 <code>number</code> arguments, and returns a value of type <code>number</code>.
+Note that the arguments on the left hand side of the equator don't have to be the same as those on the right hand side of the equator - they just have to be of the same type.</p>
+<p>One possible way to help understand this syntax is by comparing the TypeScript declaration of a function to the Java declaration of an ArrayList. Both specify the type(s) of the content / parameter / return type on the left, and assign it the value of an anonymous ArrayList / function with the matching type(s) on the right.</p>
+
+<br/>
+<h3 id="type-inferrences">Type Inferrences</h3>
+<p>As mentioned in the above section, valid full declarations of a function requires the types of parameters and return value to match for the left and right sides of the equator. This allows us to simplify our function declarations with type inferrence.</p>
+<p>Let's look at 2 examples from the official TypeScript handbook (again):</p>
+<pre><code>
+let myAdd = function (x: number, y: number): number {
+  return x + y;
+};
+<br/>
+let myAdd2: (baseValue: number, increment: number) => number = function (x, y) {
+  return x + y;
+};
+</code></pre>
+<p>Note that the first example is inferring the type of <code>myAdd</code> from the right side of the equation. The logic is similar to declaring a variable in JavaScript.</p>
+<p>The second example inferred the types of <code>x</code> and <code>y</code> from the types of <code>baseValue</code> and <code>increment</code>, making them both have the type <code>number</code>. </p>
+<p>The above examples both used the concept of <strong>contextual typing</strong>, a form of type inferrence. Here's a link to <a href="https://www.typescriptlang.org/docs/handbook/type-inference.html">the official TypeScript Handbook explanation</a> of type inferrences, which contains more examples and concepts.</p>
+
+<br/>
+<h3 id="parameters">More on Parameters (optional, default, rest)</h3>
+<p>Similar to most programming languages, too many or too few arguments in a function call will result in errors when we have strictly defined parameters. <strong>Optional parameters</strong> and <strong>default parameters</strong> are 2 potential ways of bringing flexibility to these situations. </p>
+<p>To make a parameter optional, we can simply add a question mark (<code>?</code>) after the parameter name (but before the colon (<code>:</code>) that specifies the type). Below is an example from the official TypeScript handbook:</p>
+<pre><code>
+function buildName(firstName: string, lastName?: string) {
+  if (lastName) return firstName + " " + lastName;
+  else return firstName;
+}
+</code></pre>
+<p>In addition to that, we can give a default value to an optional parameter, in case it is missing from the function call. Adding a default value to an optional parameter makes it a <strong>default parameter</strong>. We can add a default parameter to a function by adding <code>parameterName = [defaultVal]</code> to the list of parameters.</p>
+<p>Example from the offcial TypeScript handbook: </p>
+<pre><code>
+function buildName(firstName: string, lastName = "Smith") {
+  return firstName + " " + lastName;
+}
+
+let result1 = buildName("Bob"); // works correctly now, returns "Bob Smith"
+let result2 = buildName("Bob", undefined); // still works, also returns "Bob Smith"
+let result3 = buildName("Bob", "Adams", "Sr."); // error, too many parameters
+let result4 = buildName("Bob", "Adams"); // returns "Bob Adams"
+</code></pre>
+
+<p>Note that in <code>result2</code>, even though we provided <code>undefined</code> as the second argument to <code>buildName</code>, the default parameter still changed it to the default value. It's easy to understand, provided that a parameter defaults to <code>undefined</code> when we simply don't pass it in from the function call. Therefore, what the default parameter really does is changing the <code>undefined</code> value to its default value.</p>
