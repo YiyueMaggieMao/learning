@@ -6,6 +6,7 @@
 <ul>
     <li><a href="#variables">Variables</a></li>
     <li><a href="#functions">Functions</a></li>
+    <li><a href="#the-this-keyword">The "this" keyword</a></li>
 </ul>
 <hr/>
 
@@ -150,3 +151,24 @@ let result4 = buildName("Bob", "Adams"); // returns "Bob Adams"
 </code></pre>
 
 <p>Note that in <code>result2</code>, even though we provided <code>undefined</code> as the second argument to <code>buildName</code>, the default parameter still changed it to the default value. It's easy to understand, provided that a parameter defaults to <code>undefined</code> when we simply don't pass it in from the function call. Therefore, what the default parameter really does is changing the <code>undefined</code> value to its default value.</p>
+
+<h4>Rest Parameters</h4>
+<p>While optional and default parameters can decrease the lower bound of the number of possible arguments, rest parameters provides a way to allow a (theoretically) infinite number of arguments to a function call. To add a rest parameter, we add <code>...restParameterName: [type][]</code></p>
+<p>Example from my own experimenting: </p>
+<pre><code>
+function buildShoppingList(mall: string, ...items: string[]) {
+  return "Things to buy at " + mall + ": " + items.join(", ");
+}
+<br/>
+let shoppingList = buildShoppingList("the Bookstore", "Binders", "Birthday Card", "iClicker");
+console.log(shoppingList); // "Things to buy at the Bookstore: Binders, Birthday Card, iClicker" 
+</code></pre>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- This ----------------------------------------------------->
+
+<h2 id="the-this-keyword">The <code>this</code> keyword</h2>
