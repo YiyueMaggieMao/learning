@@ -171,4 +171,42 @@ console.log(shoppingList); // "Things to buy at the Bookstore: Binders, Birthday
 
 <!--------------------------------------------- This ----------------------------------------------------->
 
-<h2 id="the-this-keyword">The <code>this</code> keyword</h2>
+<h2 id="the-this-keyword">The "this" keyword</h2>
+<p><a href="#this-in-js">The "this" keyword in JavaScript</a></p>
+<p><a href="#arrow-functions-n-this">Arrow Functions and "this"</a></p>
+
+<br/>
+<h3 id="this-in-js">The "this" keyword in JavaScript</h3>
+<p>In JavaScript, <code>this</code> refers to the context in which the object is created. For more information on the use of <code>this</code> in JavaScript, check out <a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">this guide</a>.</p>
+<p>Let's look at this example from runoob.com: </p>
+<pre><code>
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id     : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+</code></pre>
+<p>In the example above, if we call <code>person.fullName()</code>, the function <code>fullName</code> will be called in the context of the the class <code>person</code>. Consequently, <code>this.firstName</code> and <code>this.lastName</code> will refer to <code>person.firstName</code> and <code>person.lastName</code> respectively, which results the function call to return "John Doe".</p>
+<p>However, doing the following will make the meaning of "this" change:</p>
+<pre><code>
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id     : 5566,
+  fullName : function() {
+    return function() {
+      return this.firstName + " " + this.lastName;
+    }
+  }
+};
+
+let personFunction = person.fullName();
+personFunction();
+</code></pre>
+<p>The example above will cause an error. On the second to the last line, we invoked the function in context of the <code>Window</code> object (or in other words, the context that wraps outside <code>person</code>). Therefore, the <code>this</code> keyword inside the anonymous function now refers to the Window object (or <code>undefined</code> in strict mode), instead of the <code>person</code> object itself.</p>
+
+<br/>
+<h3 id="arrow-functions-n-this">Arrow Functions and "this"</h3>
