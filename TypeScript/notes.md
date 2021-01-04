@@ -174,6 +174,7 @@ console.log(shoppingList); // "Things to buy at the Bookstore: Binders, Birthday
 <h2 id="the-this-keyword">The "this" keyword</h2>
 <p><a href="#this-in-js">The "this" keyword in JavaScript</a></p>
 <p><a href="#arrow-functions-n-this">Arrow Functions and "this"</a></p>
+<p><a href="#this-parameters">"This" parameters</a></p>
 
 <br/>
 <h3 id="this-in-js">The "this" keyword in JavaScript</h3>
@@ -204,9 +205,40 @@ var person = {
 };
 
 let personFunction = person.fullName();
-personFunction();
+let nameString = personFunction();
 </code></pre>
 <p>The example above will cause an error. On the second to the last line, we invoked the function in context of the <code>Window</code> object (or in other words, the context that wraps outside <code>person</code>). Therefore, the <code>this</code> keyword inside the anonymous function now refers to the Window object (or <code>undefined</code> in strict mode), instead of the <code>person</code> object itself.</p>
 
 <br/>
 <h3 id="arrow-functions-n-this">Arrow Functions and "this"</h3>
+<p>A potential workaround for the above scenario is by using <strong>arrow functions</strong>. By using arrow functions, it redefines the <code>this</code> keyword to be the context in which the function is <strong>created</strong>, rather than where it is <strong>invoked</strong>.</p>
+
+<p>For example, we can tweak the previous example as following:</p>
+<pre><code>
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id     : 5566,
+  fullName : function() {
+    return () => {
+      return this.firstName + " " + this.lastName;
+    }
+  }
+};
+
+let personFunction = person.fullName();
+let nameString = personFunction();
+console.log(nameString);
+</code></pre>
+<p>Because we declared the return function as an arrow function, when running the second to last line, the <code>this</code> keyword will be redirected to the <code>person</code> object, where we <strong>created</strong> the function, rather than the <code>Window</code>, where we <strong>invoked</strong> the function. Therefore, we can still access the members <code>firstName</code> and <code>lastName</code>, as we originally intended.</p>
+
+<br/>
+<h3 id="this-parameters">"This" parameters</h3>
+<p>Despite our ability to specify the <code>this</code> keyword with regular and arrow functions, the type of <code>this</code> in these contexts are still <code>any</code>, unless we specify otherwise. One way to do so is by adding a <strong>"this" parameter</strong> to the parameter list. A "this" parameter always comes first in a parameter list, and will not be needed in function calls.</p>
+<p>Please refer to <a href="https://github.com/YiyueMaggieMao/learning/blob/master/TypeScript/examples/this-parameter.ts">this example</a> (not included here due to format reasons) to see how to specify the <code>this</code> keyword in the example above.</p>
+<p>Note that the code wouldn't work if we didn't create a <code>Person</code> type and instead simply defined <code>this</code> to be of type <code>Object</code>, since the <code>Object</code> type doesn't have members <code>firstName</code> and <code>lastName</code>.</p>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
