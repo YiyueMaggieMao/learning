@@ -7,6 +7,7 @@
     <li><a href="#variables">Variables</a></li>
     <li><a href="#functions">Functions</a></li>
     <li><a href="#the-this-keyword">The "this" keyword</a></li>
+    <li><a href="#interfaces">Interfaces</a></li>
 </ul>
 <hr/>
 
@@ -242,3 +243,62 @@ console.log(nameString);
 <a href="#content">Back to Content</a>
 
 <hr/>
+
+<!--------------------------------------------- Interfaces ----------------------------------------------------->
+
+<h2 id="interfaces">Interfaces</h2>
+<p><a href="#interface-basics">Interface Basics</a></p>
+<p><a href="#function-types">Function Types</a></p>
+<p><a href="#indexable-types">Indexable Types</a></p>
+
+<br/>
+<h3 id="interface-basics">Interface Basics</h3>
+<p>A TypeScript interface looks somewhat like a Java interface declaration, where we specify the name and type of each required property. However, in TypeScript, we can also make properties readonly by adding the <code>readonly</code> keyword before the property name, or optional by adding a question mark (<code>?</code>) after the property name. We can also specify the return types of its functions.</p>
+<p>Let's look at an example below:</p>
+<pre><code>
+interface Cookie {
+  madeBy: string,
+  base: string,
+  toppings?: string[],
+  readonly timeBaked: Date,
+  getDescription(): string
+}
+</code></pre>
+<p>In the example above, we have defined a interface named <code>Cookie</code> with the following required properties: <code>madeBy</code> and <code>base</code> of type <code>string</code>, function <code>getDescription</code> that returns a <code>string</code>, and a readonly <code>Date</code> with the name <code>timeBaked</code>.</p>
+<p>Note that we can also add parameters, including the this parameter, to <code>getDescription()</code>, if we intend for it to have any. On the other hand, if we don't want to specify the return type of <code>getDescription()</code>, we can simply replace the line with <code>getDescription: Function</code> (please notice that there are no parenthesis in this type of definition).</p>
+
+<br/>
+<h3 id="function-types">Function Types</h3>
+<p>TypeScript interfaces can define more than just objects - it can define types of functions as well!</p>
+<p>Let's look at a previous example on how we declared a function: </p>
+<pre><code>
+let myAdd = function (x: number, y: number): number {
+  return x + y;
+};
+</code></pre>
+<p>In the above example, we used <code>(x: number, y: number): number</code> to specify the type of the function, and we can use the exact same thing to declare an interface for this type of functions, by claring an interface with one singular property consisting of input parameters on the of the left hand side of the colon (<code>:</code>), and the return type on the right hand side, like the example below:</p>
+<pre><code>
+interface numFunc {
+  (x: number, y: number): number
+}
+<br/>
+let myAdd: numFunc = function (x: number, y: number): number {
+  return x + y;
+};
+</code></pre>
+<p>We can also use contextual typing to simplify our expression in declaring <code>numFunc</code>:</p>
+<pre><code>
+interface numFunc {
+  (x: number, y: number): number
+}
+<br/>
+let myAdd: numFunc = function (x,y) {
+  return x + y;
+};
+</code></pre>
+<p>Here, the parameters <code>x</code> and <code>y</code> have been both inferred as <code>number</code> types. Using methods that don't belong to <code>number</code> types on <code>x</code> or <code>y</code> will cause an error, and so will returning a value that's not of type <code>number</code> (For example, <code>return x < y</code> will cause a type mismatch in this scenario).</p>
+
+<br/>
+<h3 id="indexable-types">Indexable Types</h3>
+<p>We can also make interfaces for <strong>indexable</strong> objects (for example, Arrays) in TypeScript by adding <code>[index: [string/number]]:[type-of-value]</code> as one of its properties. For example, <code>[index: string]:number</code> will allow indexing by property name, but all properties will need to be of type <code>number</code>. Similarly, <code>[index: number]:number</code> will allow indexing by indices.</p>
+<p>It's worth noting that, if we wish to allow both number and string indexing, we will need to make sure the property types are consistent - i.e. making sure the <code>type-of-value</code> is the same for both lines.</p>
