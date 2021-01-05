@@ -302,3 +302,19 @@ let myAdd: numFunc = function (x,y) {
 <h3 id="indexable-types">Indexable Types</h3>
 <p>We can also make interfaces for <strong>indexable</strong> objects (for example, Arrays) in TypeScript by adding <code>[index: [string/number]]:[type-of-value]</code> as one of its properties. For example, <code>[index: string]:number</code> will allow indexing by property name, but all properties will need to be of type <code>number</code>. Similarly, <code>[index: number]:number</code> will allow indexing by indices.</p>
 <p>It's worth noting that, if we wish to allow both number and string indexing, we will need to make sure the property types are consistent - i.e. making sure the <code>type-of-value</code> is the same for both lines.</p>
+<p>An example on using indexable interfaces, provided by the Official TypeScript Handbook:</p>
+<pre><code>
+interface StringArray {
+  [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+
+let myStr: string = myArray[0];
+</code></pre>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
