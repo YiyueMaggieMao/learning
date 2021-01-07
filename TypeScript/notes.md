@@ -8,6 +8,7 @@
     <li><a href="#functions">Functions</a></li>
     <li><a href="#the-this-keyword">The "this" keyword</a></li>
     <li><a href="#interfaces">Interfaces</a></li>
+    <li><a href="#classes">Classes</a></li>
 </ul>
 <hr/>
 
@@ -313,6 +314,77 @@ myArray = ["Bob", "Fred"];
 
 let myStr: string = myArray[0];
 </code></pre>
+
+<br/>
+<a href="#content">Back to Content</a>
+
+<hr/>
+
+<!--------------------------------------------- Classes ----------------------------------------------------->
+
+<h2 id="classes">Classes</h2>
+<p><a href="#class-basics">Class Basics</a></p>
+<p><a href="#class-inheritance">Class Inheritance</a></p>
+<p><a href="#classes-implementing-an-interface">Classes Implementing an Interface</a></p>
+
+<br/>
+<h3 id="class-basics">Class Basics</h3>
+<p>Let's start by looking at a simple example of a TypeScript class, from the official TypeScript Handbook:</p>
+<pre><code>
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+
+let greeter = new Greeter("world");
+</code></pre>
+<p>It is apparent that this looks very similar to a Java class declaration. When translated into Java code, the above class will most closely resemble the following:</p>
+<pre><code>
+public class Greeter {
+  public String greeting;
+  public Greeter (String message){
+    this.greeting = message;
+  }
+  public String greet(){
+    return "Hello, " + this.greeting;
+  }
+}
+
+Greeter greeter = new Greeter("World");
+</code></pre>
+<p>Note that the <code>public</code> keyword has been added when translating the TypeScript code into Java - that's because when unspecified, each member of a TypeScript class will default to <strong>public</strong>. If we wish otherwise, we can add keywords <code>private</code>, <code>protected</code>, or <code>readonly</code> before the member name. For example, if we wish to make the <code>greeting</code> field readonly, we can replace <code>greeting: string</code> with <code>readonly greeting:string</code> to make the change.</p>
+<p>(P.S: The keywords <code>private</code> and <code>protected</code> work similarly as they do in Java - look <a href="https://www.typescriptlang.org/docs/handbook/classes.html#understanding-typescripts-private">here</a> to learn more about these. The <code>readonly</code> keyword has been explained in the <a href="#interface-basics">"Interface Basics" section</a> of the notes).</p>
+
+<br/>
+<h3 id="class-inheritance">Class Inheritance</h3>
+<p>Similar to most OOP languages, class inheritance also exists in TypeScript. Using the <code>extends</code> keyword, we can make a child class that inherits the members of its parent class.</p>
+<p>Click <a href="https://github.com/YiyueMaggieMao/learning/blob/master/TypeScript/examples/class-inheritance.ts">here</a> for an example on class inheritance from the Official TypeScript Handbook (not directly pasted due to spacing reasons).</p>
+<p>As we can see from the example, we can override members in the parent class by defining it differently in the subclass (with the same name and type, and matching types of parameters, if any). We also have to call <code>super()</code> in the child class's constructor to be able to accesss any values with <code>this</code> in a constructor body - this is a very important rule in TypeScript.</p>
+
+<br/>
+<h3 id="classes-implementing-an-interface">Classes Implementing an Interface</h3>
+<p>Now that we have introduced both classes and interfaces, it's worth noting that TypeScript classes can, too, implement an interface. Similar to most other OOP languages, classes in TypeScript can implement an interface using the <code>implements</code> keyword, and must provide implementations of all members of the interface</p>
+<p>Let's look at the example below:</p>
+<code><pre>
+interface ClockInterface {
+  currentTime: Date;
+  setTime(d: Date): void;
+}
+<br/>
+class Clock implements ClockInterface {
+  currentTime: Date = new Date();
+  setTime(d: Date) {
+    this.currentTime = d;
+  }
+  constructor(h: number, m: number) {}
+}
+</code></pre>
+<p>In the example above, we have defined a <code>Clock</code> class that extends off the <code>ClockInterface</code> interface. The members <code>currentTime</code> and <code>setTime</code> are required, though it can other members that are exclusive to the <code>Clock</code> class itself (for example, the constructor, and any other variables/functions).</p>
 
 <br/>
 <a href="#content">Back to Content</a>
