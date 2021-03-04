@@ -9,6 +9,7 @@
     <li><a href="#the-this-keyword">The "this" keyword</a></li>
     <li><a href="#interfaces">Interfaces</a></li>
     <li><a href="#classes">Classes</a></li>
+    <li><a href="#misc-topics">Misc. Topics</a></li>
 </ul>
 <hr/>
 
@@ -390,3 +391,23 @@ class Clock implements ClockInterface {
 <a href="#content">Back to Content</a>
 
 <hr/>
+
+<!--------------------------------------------- Misc. Topics ----------------------------------------------------->
+
+<h2 id="misc-topics">Misc. Topics</h2>
+<p><a href="#loops">Loops</a></p>
+
+<br/>
+<h3 id="loops">Loops</h3>
+<p>The loops in TypeScript are mostly similar to that in JavaScript, except that we need to define any variable that we need to use in the loop conditions, before actually entering the loop. Failure to do so will result in a compile error.</p>
+<p>For example, let's look at my TypeScript leetcode solution for #35 - Search Insert Position:</p>
+<pre><code>
+function searchInsert(nums: number[], target: number): number {
+    let arrlen:number = nums.length;
+    let i:number;
+    for(i = 0; i < arrlen; i++) {
+        if(nums[i] >= target) {return i;}
+    }
+    return arrlen;
+};
+</code></pre>
